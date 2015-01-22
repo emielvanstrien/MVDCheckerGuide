@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="00000000-0000-0000-0000-000000000000"
+	name="" xmlns="http://buildingsmart-tech.org/mvdXML/mvdXML1-1">
+	<Templates>
+		<ConceptTemplate uuid="d2e09dca-991e-47b5-bf54-f0e5a97bf1aa"
+			name="Aggregation" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
+			<Rules>
+				<AttributeRule AttributeName="IsDecomposedBy"
+					Cardinality="_asSchema">
+					<EntityRules>
+						<EntityRule EntityName="IfcRelAggregates" Cardinality="OneToMany">
+							<AttributeRules>
+								<AttributeRule RuleID="AggergationType"
+									AttributeName="RelatedObjects" Cardinality="OneToMany">
+									<EntityRules>
+										<EntityRule EntityName="IfcObject" Cardinality="_asSchema" />
+										<AttributeRules>
+											<AttributeRule RuleID="Name" AttributeName="Name"
+												Cardinality="One">
+											</AttributeRule>
+										</AttributeRules>
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="bc1cd689-b050-41ae-90eb-511237e8f30d"
+			name="ContextUnits" applicableSchema="IFC4" applicableEntity="IfcProject">
+			<Rules>
+				<AttributeRule AttributeName="UnitsInContext"
+					Cardinality="One">
+					<EntityRules>
+						<EntityRule EntityName="IfcUnitAssignment" Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="Units" Cardinality="OneToMany">
+									<EntityRules>
+										<EntityRule EntityName="IfcDerivedUnit"
+											Cardinality="_asSchema" />
+										<EntityRule EntityName="IfcMonetaryUnit"
+											Cardinality="_asSchema" />
+										<EntityRule EntityName="IfcNamedUnit" Cardinality="_asSchema" />
+										<EntityRule EntityName="IfcSIUnit" Cardinality="OneToMany">
+											<AttributeRules>
+												<AttributeRule RuleID="UnitType"
+													AttributeName="UnitType" Cardinality="_asSchema" />
+												<AttributeRule RuleID="UnitPrefix"
+													AttributeName="Prefix" Cardinality="_asSchema" />
+												<AttributeRule RuleID="UnitName"
+													AttributeName="Name" Cardinality="_asSchema" />
+											</AttributeRules>
+										</EntityRule>
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="5966aedc-339a-4d84-abc0-62f67dc3bbea"
+			name="Identity" applicableSchema="IFC4" applicableEntity="IfcRoot">
+			<Rules>
+				<AttributeRule AttributeName="GlobalId" Cardinality="One" />
+				<AttributeRule RuleID="Name" AttributeName="Name"
+					Cardinality="One" />
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="4f485f2a-d98b-4899-ae57-ed123bedd78a"
+			name="Orientation" applicableSchema="IFC4" applicableEntity="IfcProject">
+			<Rules>
+				<AttributeRule AttributeName="RepresentationContexts"
+					Cardinality="OneToMany">
+					<EntityRules>
+						<EntityRule EntityName="IfcGeometricRepresentationContext"
+							Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="TrueNorth"
+									Cardinality="One">
+									<EntityRules>
+										<EntityRule EntityName="IfcDirection" Cardinality="_asSchema" />
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="568bf132-de9f-4194-9443-51d9509a9d2b"
+			name="SiteGlobalLocation" applicableSchema="IFC4" applicableEntity="IfcSite">
+			<Rules>
+				<AttributeRule AttributeName="RefLatitude"
+					Cardinality="OneToMany" />
+				<AttributeRule AttributeName="RefLongitude"
+					Cardinality="OneToMany" />
+				<AttributeRule AttributeName="RefElevation"
+					Cardinality="One" />
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="4dafbcfc-b800-4ede-bbb9-26b3cf43d268"
+			name="LayerAssignment" applicableSchema="IFC4" applicableEntity="IfcProduct">
+			<Rules>
+				<AttributeRule AttributeName="Representation"
+					Cardinality="One">
+					<EntityRules>
+						<EntityRule EntityName="IfcProductDefinitionShape"
+							Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="Representations"
+									Cardinality="_asSchema">
+									<EntityRules>
+										<EntityRule EntityName="IfcShapeRepresentation"
+											Cardinality="_asSchema">
+											<AttributeRules>
+												<AttributeRule RuleID="LayerAssignment"
+													AttributeName="LayerAssignments" Cardinality="_asSchema">
+													<EntityRules>
+														<EntityRule EntityName="IfcPresentationLayerAssignment"
+															Cardinality="_asSchema">
+															<AttributeRules>
+																<AttributeRule RuleID="LayerName"
+																	AttributeName="Name" Cardinality="_asSchema" />
+															</AttributeRules>
+														</EntityRule>
+													</EntityRules>
+												</AttributeRule>
+											</AttributeRules>
+										</EntityRule>
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="4521cac9-8f69-4778-b670-d10b1d9c12f5"
+			name="ContainedRelationship" applicableSchema="IFC4"
+			applicableEntity="IfcElement">
+			<Rules>
+				<AttributeRule RuleID="ContainedInStructure"
+					AttributeName="ContainedInStructure" Cardinality="_asSchema">
+					<EntityRules>
+						<EntityRule EntityName="IfcRelContainedInSpatialStructure"
+							Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="RelatingStructure"
+									Cardinality="_asSchema">
+									<EntityRules>
+										<EntityRule EntityName="IfcSpace" Cardinality="_asSchema" />
+										<EntityRule EntityName="IfcBuildingStorey"
+											Cardinality="_asSchema" />
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+				<AttributeRule RuleID="Decomposes" Description="$"
+					AttributeName="Decomposes" Cardinality="_asSchema">
+					<EntityRules>
+						<EntityRule EntityName="IfcRelDecomposes" Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="RelatingObject"
+									Cardinality="_asSchema" />
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+		<ConceptTemplate uuid="3a0e6536-f2bb-46bd-a58a-eaa55511fabd"
+			name="SingleValueProperty" applicableSchema="IFC4" applicableEntity="IfcObject">
+			<Rules>
+				<AttributeRule AttributeName="IsDefinedBy"
+					Cardinality="OneToMany">
+					<EntityRules>
+						<EntityRule EntityName="IfcRelDefinesByProperties"
+							Cardinality="_asSchema">
+							<AttributeRules>
+								<AttributeRule AttributeName="RelatingPropertyDefinition"
+									Cardinality="_asSchema">
+									<EntityRules>
+										<EntityRule EntityName="IfcPropertySet"
+											Cardinality="_asSchema">
+											<AttributeRules>
+												<AttributeRule AttributeName="HasProperties"
+													Cardinality="_asSchema">
+													<EntityRules>
+														<EntityRule EntityName="IfcPropertySingleValue"
+															Cardinality="_asSchema">
+															<AttributeRules>
+																<AttributeRule RuleID="PropertyName"
+																	AttributeName="Name" Cardinality="_asSchema" />
+																<AttributeRule RuleID="PropertyValue"
+																	AttributeName="NominalValue" Cardinality="_asSchema" />
+																<AttributeRule RuleID="PropertyUnit"
+																	AttributeName="Unit" Cardinality="_asSchema" />
+															</AttributeRules>
+														</EntityRule>
+													</EntityRules>
+												</AttributeRule>
+												<AttributeRule RuleID="PropertySetName"
+													AttributeName="Name" Cardinality="_asSchema" />
+											</AttributeRules>
+										</EntityRule>
+									</EntityRules>
+								</AttributeRule>
+							</AttributeRules>
+						</EntityRule>
+					</EntityRules>
+				</AttributeRule>
+			</Rules>
+		</ConceptTemplate>
+	</Templates>
+	<Views>
+		<ModelView uuid="dce6f5c2-cd73-4c6d-9a13-690be9adf597" name="Rgd"
+			applicableSchema="IFC4">
+			<ExchangeRequirements>
+				<ExchangeRequirement uuid="7d3dd1bf-37b0-4c50-bf6e-7ec4d7a6e52f"
+					name="Rgd standard" applicability="both" />
+			</ExchangeRequirements>
+			<Roots>
+				<ConceptRoot uuid="84008748-a11f-4f3f-b2be-c40dc146fb6d"
+					name="" applicableRootEntity="IfcSite">
+					<Concepts>
+						<Concept uuid="86732f6c-2ded-42cb-9c92-db42b99b35cd" name="SiteLocation"
+							override="false">
+							<Definitions>
+								<Definition>
+									<Body><![CDATA[This rule checks the global location of the terrain.
+									RGD Norm 2.2.7.2 Terrain
+									Attributes:
+									o RefLatitude: geographic location, latitude of reference point according to WGS84.
+									o RegLongitude: geographic location, longitude of reference point according to WGS84.
+									o RefElevation: geographic location, elevation of reference point, elevation with respect to NAP.]]>
+									</Body>
+								</Definition>
+							</Definitions>
+							<Template ref="568bf132-de9f-4194-9443-51d9509a9d2b" />
+							<Requirements />
+							<Rules />
+						</Concept>
+					</Concepts>
+				</ConceptRoot>
+			</Roots>
+		</ModelView>
+	</Views>
+</mvdXML>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="00000000-0000-0000-0000-000000000000" name="" xmlns="http://buildingsmart-tech.org/mvdXML/mvdXML1-1">
+  <Templates>
+    <ConceptTemplate uuid="4f03fc6a-2a16-4fa5-b09e-cd0e711b5f7f" name="Naming" applicableSchema="IFC4" applicableEntity="IfcRoot">
+      <Rules>
+        <AttributeRule RuleID="Name" AttributeName="Name" Cardinality="One" />
+        <AttributeRule AttributeName="GlobalId" Cardinality="One" />
+      </Rules>
+    </ConceptTemplate>
+  </Templates>
+  <Views>
+    <ModelView uuid="af8f6312-2561-4181-808f-592a4c5e17ee" name="Example" applicableSchema="IFC4">
+      <ExchangeRequirements>
+        <ExchangeRequirement uuid="15e81157-a529-4931-abc6-18589f8665b9" name="Test" applicability="both" />
+      </ExchangeRequirements>
+      <Roots>
+        <ConceptRoot uuid="ee66a3b5-7016-49b8-b73f-3563a72c2723" name="" applicableRootEntity="IfcSite">
+          <Concepts>
+            <Concept uuid="c11e4b17-3c19-4ef6-b0fe-1e7698a69f20" name="Naming" override="false">
+              <Template ref="4f03fc6a-2a16-4fa5-b09e-cd0e711b5f7f" />
+              <Requirements>
+                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="15e81157-a529-4931-abc6-18589f8665b9" />
+              </Requirements>
+              <Rules>
+                <TemplateRule Parameters="Name[Value]=reg '([A-Za-z ]+ [A-Z]{2} [0-9]{4} - )*[A-Za-z ]+ [A-Z]{2} [0-9]{4}'" />
+              </Rules>
+            </Concept>
+          </Concepts>
+        </ConceptRoot>
+      </Roots>
+    </ModelView>
+  </Views>
+</mvdXML>

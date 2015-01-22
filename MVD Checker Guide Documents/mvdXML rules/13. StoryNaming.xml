@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="00000000-0000-0000-0000-000000000000"
+	name="" xmlns="http://buildingsmart-tech.org/mvdXML/mvdXML1-1">
+	<Templates>
+		<ConceptTemplate uuid="5966aedc-339a-4d84-abc0-62f67dc3bbea"
+			name="Identity" applicableSchema="IFC4" applicableEntity="IfcRoot">
+			<Rules>
+				<AttributeRule AttributeName="GlobalId" Cardinality="One" />
+				<AttributeRule RuleID="Name" AttributeName="Name"
+					Cardinality="One" />
+			</Rules>
+		</ConceptTemplate>
+	</Templates>
+	<Views>
+		<ModelView uuid="dce6f5c2-cd73-4c6d-9a13-690be9adf597" name="Rgd"
+			applicableSchema="IFC4">
+			<ExchangeRequirements>
+				<ExchangeRequirement uuid="7d3dd1bf-37b0-4c50-bf6e-7ec4d7a6e52f"
+					name="Rgd standard" applicability="both" />
+			</ExchangeRequirements>
+			<Roots>
+				<ConceptRoot uuid="dfcf1787-3b31-4c46-98c9-155f76a5f82a"
+					name="" applicableRootEntity="IfcBuildingStorey">
+					<Concepts>
+						<Concept uuid="599e253d-91ca-48b1-af34-df3ae6136f28" name="Identity"
+							override="false">
+							<Definitions>
+								<Definition>
+									<Body><![CDATA[This concept checks the name of the storey should follow the level 
+									naming convention <level number><level type><space><text description>
+									RGD Norm 2.1.9 Building levels and naming]]>
+									</Body>
+								</Definition>
+							</Definitions>
+							<Template ref="5966aedc-339a-4d84-abc0-62f67dc3bbea" />
+							<Requirements />
+							<Rules>
+								<TemplateRule
+									Parameters="Name[Value]=reg '(-|[0-9])[0-9] [a-zA-Z ]*[a-z]?'" />
+							</Rules>
+						</Concept>
+					</Concepts>
+				</ConceptRoot>
+			</Roots>
+		</ModelView>
+	</Views>
+</mvdXML>
